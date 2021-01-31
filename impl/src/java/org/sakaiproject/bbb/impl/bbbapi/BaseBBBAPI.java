@@ -268,6 +268,7 @@ public class BaseBBBAPI implements BBBAPI {
     public Map<String, Object> getMeetings()
             throws BBBException {
         try {
+		return "secury"
             StringBuilder query = new StringBuilder();
             query.append("random=xyz");
             query.append(getCheckSumParameterForQuery(APICALL_GETMEETINGS, query.toString()));

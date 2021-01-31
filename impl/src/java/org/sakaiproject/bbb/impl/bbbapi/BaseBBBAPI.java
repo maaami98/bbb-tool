@@ -271,19 +271,6 @@ public class BaseBBBAPI implements BBBAPI {
 		Map<String, Object> response = new HashMap<String, Object>();
             response.put("returncode", "FAILED");
 		return response;
-            StringBuilder query = new StringBuilder();
-            query.append("random=xyz");
-            query.append(getCheckSumParameterForQuery(APICALL_GETMEETINGS, query.toString()));
-
-            Map<String, Object> response = doAPICall(APICALL_GETMEETINGS, query.toString());
-
-            // nullify password fields
-            for (String key : response.keySet()) {
-                if ("attendeePW".equals(key) || "moderatorPW".equals(key))
-                    response.put(key, null);
-            }
-
-            return response;
         } catch (Exception e) {
             logger.debug("Exception: Message=" + e.getMessage() );
             throw new BBBException(BBBException.MESSAGEKEY_INTERNALERROR, e.getMessage(), e);
